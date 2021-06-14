@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -92,11 +90,6 @@ namespace FinalProject.Controllers
                 contentType = "application/octet-stream";
             }
             return contentType;
-        }
-        private string GetUserGuid()
-        {
-            var res = User.Claims.First(c => c.Type == "UserID").Value;
-            return User.Claims.First(c => c.Type == "UserID").Value;
         }
     }
 }

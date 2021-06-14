@@ -1,15 +1,10 @@
-﻿
-using DAL.Entities;
+﻿using DAL.Entities;
 using DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Transactions;
 
 namespace DAL.Repositories
 {

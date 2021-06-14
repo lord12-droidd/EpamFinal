@@ -1,7 +1,6 @@
 using AutoMapper;
 using BLL;
 using BLL.Interfaces;
-using BLL.Models;
 using BLL.Services;
 using DAL;
 using DAL.Entities;
@@ -10,7 +9,6 @@ using DAL.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
@@ -62,7 +60,6 @@ namespace EpamFinal
             services.AddScoped<IFileRepository, FileRepository>();
             services.AddTransient<IFileRepository, FileRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<IUsersToFilesRepository, UsersToFilesRepository>();
             services.AddTransient<IFileService, FileService>();
             services.AddTransient<IUserService, UserService>();
 
