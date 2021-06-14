@@ -7,7 +7,6 @@ namespace DAL.Interfaces
     {
         Task<UserEntity> GetByGuid(string guid);
         Task<UserEntity> AddAsync(UserEntity entity, string password);
-        Task<UserEntity> AddAdminAsync(UserEntity entity, string password);
         Task<UserEntity> GetByUserNameAsync(string userName);
         Task<UserEntity> DeleteByIdAsync(string guid);
         Task<bool> CheckPassword(UserEntity user, string password);

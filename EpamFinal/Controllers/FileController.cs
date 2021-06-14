@@ -80,6 +80,7 @@ namespace FinalProject.Controllers
             var userFiles = _fileService.GetAllUserFiles(userName);
             return Ok(userFiles.Select(file => file.Name));
         }
+
         [HttpDelete]
         [Route("Delete")]
         public async Task<IActionResult> Delete([FromQuery] string file)

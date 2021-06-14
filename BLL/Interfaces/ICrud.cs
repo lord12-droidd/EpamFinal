@@ -6,8 +6,5 @@ namespace BLL.Interfaces
     public interface ICrud<TModel> where TModel : class
     {
         IEnumerable<TModel> GetAll();
-        Task UpdateAsync(TModel model);
-
-
     }
 }

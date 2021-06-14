@@ -20,14 +20,6 @@ namespace DAL.Repositories
         {
              return _userManager.CheckPasswordAsync(user, password);
         }
-        public async Task<UserEntity> AddAdminAsync(UserEntity entity, string password)
-        {
-            await _userManager.CreateAsync(entity, password);
-            await _userManager.AddToRoleAsync(entity, "Admin");
-            await _context.SaveChangesAsync();
-            return entity;
-        }
-
         public async Task<UserEntity> AddAsync(UserEntity entity, string password)
         {
 

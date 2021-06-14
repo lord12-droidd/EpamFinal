@@ -22,9 +22,5 @@ namespace DAL
             FileRepository = new FileRepository(_context);
             UserRepository = new UserRepository(_context, _userManager);
         }
-        public Task<int> SaveAsync()
-        {
-            return _context.SaveChangesAsync();
-        }
     }
 }

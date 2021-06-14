@@ -11,7 +11,6 @@ namespace BLL.Interfaces
         bool CheckPassword(string userName, string password);
         string GetUserGuid(UserModel user);
         bool CheckValidation(UserModel model);
-        Task<UserModel> AddAdminAsync(UserModel model);
         Task<UserModel> AddAsync(UserModel model);
     }
 }

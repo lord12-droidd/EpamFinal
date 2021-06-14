@@ -20,17 +20,10 @@ namespace BLL.Services
             _mapper = mapper;
         }
 
-        public async Task<UserModel> AddAdminAsync(UserModel model)
-        {
-            var res = await _unitOfWork.UserRepository.AddAdminAsync(_mapper.Map<UserEntity>(model), model.Password);
-            return _mapper.Map<UserModel>(res);
-        }
-
         public async Task<UserModel> AddAsync(UserModel model)
         {
             var res = await _unitOfWork.UserRepository.AddAsync(_mapper.Map<UserEntity>(model), model.Password);
             return _mapper.Map<UserModel>(res);
-            //await _userManager.CreateAsync(_mapper.Map<UserEntity>(model), model.Password);
         }
 
         public bool CheckPassword(string userName, string password)
@@ -80,11 +73,6 @@ namespace BLL.Services
         {
             return _unitOfWork.UserRepository.GetByUserNameAsync(user.UserName).Result.Id;
            
-        }
-
-        public Task UpdateAsync(UserModel model)
-        {
-            throw new NotImplementedException();
         }
     }
 }

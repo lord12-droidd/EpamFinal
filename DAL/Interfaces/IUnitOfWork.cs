@@ -7,6 +7,5 @@ namespace DAL.Interfaces
         IFileRepository FileRepository { get; }
 
         IUserRepository UserRepository { get; }
-        Task<int> SaveAsync();
     }
 }
