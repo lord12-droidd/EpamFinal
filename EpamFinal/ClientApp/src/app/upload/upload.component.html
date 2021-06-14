@@ -1,0 +1,12 @@
+<div class="container-upload">
+  <button [disabled]="disabled" [ngClass]="{'disabled': disabled}" class="btn btn-dark" (click)="checkCheckBoxvalue(ch); getUser(); inputFile.click()">Upload</button>
+  <input
+    name="file"
+    id="file"
+    (change)="upload($event)"
+    type="file" #inputFile hidden>
+    <div class="checkbox">
+      <input type="checkbox" (change)="checkCheckBoxvalue($event)" #ch>
+      <label for="scales">Private</label>
+    </div>
+</div>

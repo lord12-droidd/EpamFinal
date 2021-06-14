@@ -1,0 +1,24 @@
+
+
+<div class="card m-5" style="width:18rem" *ngIf="userDetails">
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Username : </strong>{{userDetails.userName}}</li>
+    <li class="list-group-item"><strong>Email : </strong>{{userDetails.email}}</li>
+  </ul>
+</div>
+<hr>
+<h2>Public Files</h2>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="files">
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let file of files">
+      <td>{{file}}</td>
+      <td><app-download [disabled]="showProgress" [fileName]="file" (downloadStatus)="downloadStatus($event)"></app-download></td>
+    </tr>
+  </tbody>
+</table>

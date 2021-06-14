@@ -1,0 +1,21 @@
+form {
+    width: 80%;
+}
+
+.container {
+    display: flex;
+    width: 50%;
+}
+
+app-registration {
+    margin-top: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.col-md-6 {
+    width: 100%;
+}

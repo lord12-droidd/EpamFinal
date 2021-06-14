@@ -1,0 +1,22 @@
+<h1 id="tableLabel">Your personal File storage</h1>
+<button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+<hr>
+<app-upload [disabled]="showProgress" (uploadStatus)="uploadStatus($event)"></app-upload>
+<h2>File List</h2>
+<p *ngIf="showProgress"> progress <strong>{{percentage}}%</strong></p>
+<label class="error" [hidden]="!showDownloadError">ci sono stati errori durante il download</label>
+<label class="error" [hidden]="!showUploadError">ci sono stati errori durante l'upload</label>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="files">
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let file of files">
+      <td>{{file}}</td>
+      <td><app-download [disabled]="showProgress" [fileName]="file" (downloadStatus)="downloadStatus($event)"></app-download></td>
+    </tr>
+  </tbody>
+</table>
