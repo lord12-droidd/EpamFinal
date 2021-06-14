@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
@@ -17,13 +16,13 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { DownloadComponent } from './download/download.component';
 import { FileManagerComponent } from './file-manager/file-manager.component';
 import { UploadComponent } from './upload/upload.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
     RegistrationComponent,
     LoginComponent,
     AdminComponent,
@@ -37,12 +36,12 @@ import { UploadComponent } from './upload/upload.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
       progressBar: true
     }),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FileManagerComponent,canActivate: [AuthGuard] },
       { path: 'registration', component : RegistrationComponent},
       { path: 'login', component : LoginComponent},

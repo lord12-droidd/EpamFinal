@@ -19,7 +19,7 @@ namespace Final.Controllers
     [ApiController]
     public class ApplicationUserController : ControllerBase
     {
-        private IUserService _userService;
+        private readonly IUserService _userService;
         private readonly ApplicationSettings _appSettings;
         public ApplicationUserController(IUserService userService, IOptions<ApplicationSettings> applicationSettings)
         {
@@ -90,29 +90,6 @@ namespace Final.Controllers
         private string GetUserId(UserModel user)
         {
             return _userService.GetUserGuid(user);
-        }
-        [HttpGet]
-        [Authorize(Roles = "Admin")]
-        [Route("ForAdmin")]
-        public string GetForAdmin()
-        {
-            return "Web method for Admin";
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "AppUser")]
-        [Route("ForCustomer")]
-        public string GetCustomer()
-        {
-            return "Web method for Customer";
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "Admin,AppUser")]
-        [Route("ForAdminOrAppUser")]
-        public string GetForAdminOrCustomer()
-        {
-            return "Web method for Admin or AppUser";
         }
     }
 }

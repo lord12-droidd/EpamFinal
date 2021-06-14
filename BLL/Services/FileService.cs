@@ -37,8 +37,8 @@ namespace BLL.Services
         public IEnumerable<FileModel> GetAll()
         {
             var files = _unitOfWork.FileRepository.FindAll();
-            var prekol = _mapper.Map<IEnumerable<FileEntity>, IEnumerable<FileModel>>(files);
-            return prekol;
+            var mappedFiles = _mapper.Map<IEnumerable<FileEntity>, IEnumerable<FileModel>>(files);
+            return mappedFiles;
         }
 
         public IEnumerable<FileModel> GetAllPublicFiles()
@@ -49,6 +49,21 @@ namespace BLL.Services
         public IEnumerable<FileModel> GetAllUserFiles(string userName)
         {
             return _mapper.Map<IEnumerable<FileEntity>, IEnumerable<FileModel>>(_unitOfWork.FileRepository.GetAllUserFiles(userName));
+        }
+        public async Task<FileModel> GetByFilePath(string filePath)
+        {
+            return  _mapper.Map<FileModel>(await _unitOfWork.FileRepository.GetByFilePath(filePath));
+        }
+
+        public async Task<MemoryStream> GetFileFromStorage(string filePath)
+        {
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(filePath, FileMode.Open))
+            {
+                await stream.CopyToAsync(memory);
+            }
+            memory.Position = 0;
+            return memory;
         }
 
         public Task<FileModel> GetByIdAsync(int id)
@@ -68,10 +83,9 @@ namespace BLL.Services
             }
             if (fileModel.FileContent.Length > 0)
             {
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await fileModel.FileContent.CopyToAsync(fileStream);
-                }
+
+                using var fileStream = new FileStream(filePath, FileMode.Create);
+                await fileModel.FileContent.CopyToAsync(fileStream);
             }
         }
     }

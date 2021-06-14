@@ -17,17 +17,9 @@ export class HomeComponent implements OnInit {
   public showDownloadError: boolean;
   public showUploadError: boolean;
 
-  constructor(private service: RegistrationService, private fileService : FilesService) { }
+  constructor(private fileService : FilesService) { }
 
   ngOnInit() {
-    this.service.getUserProfile().subscribe(
-      res => {
-        this.userDetails = res;
-      },
-      err => {
-        console.log(err);
-      },
-    );
     this.getFiles();
   }
   getFiles() {

@@ -50,7 +50,6 @@ export class FilesService {
     return this.httpClient.get<string[]>(this.apiFileUrl);
   }
   public getPersonalFiles(userInfo : any): Observable<string[]> {
-    console.log(userInfo);
     return this.httpClient.get<string[]>(`${this.apiPersonalFilesUrl}?userName=${userInfo}`);
   }
 }

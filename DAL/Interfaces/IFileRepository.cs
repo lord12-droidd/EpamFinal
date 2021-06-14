@@ -10,5 +10,6 @@ namespace DAL.Interfaces
         Task<FileEntity> GetByIdAsync(int id);
         Task DeleteByIdAsync(int id);
         IEnumerable<FileEntity> GetAllUserFiles(string userName);
+        Task<FileEntity> GetByFilePath(string filePath);
     }
 }

@@ -65,8 +65,12 @@ namespace BLL.Services
         public UserModel GetByUserName(string userName)
         {
             var result = _unitOfWork.UserRepository.GetByUserNameAsync(userName).Result;
-            var role = _unitOfWork.UserRepository.GetUserRole(userName);
             var returnModel = _mapper.Map<UserModel>(result);
+            if (returnModel == null)
+            {
+                return returnModel;
+            }
+            var role = _unitOfWork.UserRepository.GetUserRole(userName);
             returnModel.Role = role.Result;
             return returnModel;
         }

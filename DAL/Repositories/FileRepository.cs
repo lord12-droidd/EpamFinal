@@ -70,6 +70,11 @@ namespace DAL.Repositories
         {
             return Entity.FirstOrDefaultAsync(b => b.Id == id);
         }
+        public async Task<FileEntity> GetByFilePath(string filePath)
+        {
+            var result = await _context.Files.FirstOrDefaultAsync(file => file.Path == filePath);
+            return result;
+        }
 
     }
 

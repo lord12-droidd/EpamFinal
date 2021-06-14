@@ -1,5 +1,6 @@
 ﻿using BLL.Models;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace BLL.Interfaces
@@ -11,5 +12,7 @@ namespace BLL.Interfaces
         Task<FileModel> AddAsync(FileModel file, string userName);
         IEnumerable<FileModel> GetAllUserFiles(string userName);
         IEnumerable<FileModel> GetAllPublicFiles();
+        Task<FileModel> GetByFilePath(string filePath);
+        Task<MemoryStream> GetFileFromStorage(string filePath);
     }
 }

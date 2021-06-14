@@ -15,15 +15,12 @@ namespace FinalProject.Controllers
     [ApiController]
     public class FileController : ControllerBase
     {
-        private IWebHostEnvironment _hostingEnvironment;
-        private IFileService _fileService;
+        private readonly IFileService _fileService;
         private const string _directoryPath = @"C:\Users\USER\source\repos\EpamFinal\DAL\Files";
 
-
-        public FileController(IWebHostEnvironment environment, IFileService fileService)
+        public FileController(IFileService fileService)
         {
             _fileService = fileService;
-            _hostingEnvironment = environment;
         }
 
         [HttpPost]
@@ -51,17 +48,13 @@ namespace FinalProject.Controllers
         public async Task<IActionResult> Download([FromQuery] string file)
         {
             var filePath = Path.Combine(_directoryPath, file);
-            if (!System.IO.File.Exists(filePath))
-                return NotFound();
-
-            var memory = new MemoryStream();
-            using (var stream = new FileStream(filePath, FileMode.Open))
+            if (await _fileService.GetByFilePath(filePath) == null)
             {
-                await stream.CopyToAsync(memory);
+                return NotFound();
             }
-            memory.Position = 0;
+            var fileToDownload = _fileService.GetFileFromStorage(filePath).Result;
 
-            return File(memory, GetContentType(filePath), file);
+            return File(fileToDownload, GetContentType(filePath), file);
         }
 
         [HttpGet]
@@ -79,8 +72,6 @@ namespace FinalProject.Controllers
             var userFiles = _fileService.GetAllUserFiles(userName);
             return Ok(userFiles.Select(file => file.Name));
         }
-
-
         private string GetContentType(string path)
         {
             var provider = new FileExtensionContentTypeProvider();
