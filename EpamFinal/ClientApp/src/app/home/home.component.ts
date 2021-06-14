@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { ProgressStatus, ProgressStatusEnum } from '../progress-status.model';
 import { FilesService } from '../services/files.service';
-import { RegistrationService } from '../services/registration.service';
 
 @Component({
   selector: 'app-home',

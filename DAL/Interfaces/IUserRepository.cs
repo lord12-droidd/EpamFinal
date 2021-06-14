@@ -9,7 +9,7 @@ namespace DAL.Interfaces
         Task<UserEntity> AddAsync(UserEntity entity, string password);
         Task<UserEntity> AddAdminAsync(UserEntity entity, string password);
         Task<UserEntity> GetByUserNameAsync(string userName);
-        Task DeleteByIdAsync(string guid);
+        Task<UserEntity> DeleteByIdAsync(string guid);
         Task<bool> CheckPassword(UserEntity user, string password);
         Task<string> GetUserRole(string userName);
     }

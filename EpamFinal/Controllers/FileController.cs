@@ -58,8 +58,16 @@ namespace FinalProject.Controllers
         }
 
         [HttpGet]
+        [Route("AllFiles")]
+        public IActionResult AllFiles()
+        {
+            var files = _fileService.GetAll();
+            return Ok(files.Select(file => file.Name));
+        }
+
+        [HttpGet]
         [Route("Files")]
-        public IActionResult Files()
+        public IActionResult PublicFiles()
         {
             var userFiles = _fileService.GetAllPublicFiles();
             return Ok(userFiles.Select(file => file.Name));

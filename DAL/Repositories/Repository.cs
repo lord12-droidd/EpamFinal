@@ -23,14 +23,6 @@ namespace DAL.Repositories
             Entity = _context.Set<T>();
         }
 
-
-
-        public void Delete(T entity)
-        {
-            Entity.Remove(entity);
-        }
-
-
         public IQueryable<T> FindAll()
         {
             return Entity.AsQueryable();

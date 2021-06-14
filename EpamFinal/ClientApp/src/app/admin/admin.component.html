@@ -1,1 +1,34 @@
-<p>admin works!</p>
+<hr>
+<h2>Users</h2>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="users">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user}}</td>
+      <td><button class="btn btn-secondary" (click)="deleteUser(user)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h2>Files</h2>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="files">
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Download</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let file of files">
+      <td>{{file}}</td>
+      <td><app-download [disabled]="showProgress" [fileName]="file" (downloadStatus)="downloadStatus($event)"></app-download></td>
+      <td><button class="btn btn-secondary" (click)="deleteFile(file)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

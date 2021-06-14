@@ -24,7 +24,7 @@
     <tr *ngFor="let file of files">
       <td>{{file}}</td>
       <td><app-download [disabled]="showProgress" [fileName]="file" (downloadStatus)="downloadStatus($event)"></app-download></td>
-      <td><app-delete [disabled]="showProgress" [fileName]="file"></app-delete></td>
+      <td><button [disabled]="disabled" class="btn btn-secondary" [ngClass]="{'disabled': disabled}" (click)="deleteFile(file)">Delete</button></td>
     </tr>
   </tbody>
 </table>

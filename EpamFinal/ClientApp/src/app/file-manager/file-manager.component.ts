@@ -46,6 +46,17 @@ export class FileManagerComponent implements OnInit {
     );
   }
 
+  public deleteFile(fileName : string) {
+    this.fileService.deleteFile(fileName).subscribe();
+    this.removeElementFromArray(fileName);
+  }
+
+  private removeElementFromArray(element: string) {
+    this.files.forEach((value,index)=>{
+        if(value==element) this.files.splice(index,1);
+    });
+  }
+
   onLogout() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);

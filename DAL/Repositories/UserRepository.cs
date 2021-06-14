@@ -37,14 +37,16 @@ namespace DAL.Repositories
             return entity;
         }
 
-        public async Task DeleteByIdAsync(string guid)
+        public async Task<UserEntity> DeleteByIdAsync(string guid)
         {
-            UserEntity entityToDelete = await Entity.SingleOrDefaultAsync(e => e.Id == guid);
+            var entityToDelete = Entity.Remove(await _userManager.FindByIdAsync(guid)).Entity;
 
             if (entityToDelete == null)
-                return;
+                return entityToDelete;
 
-            Entity.Remove(entityToDelete);
+            _context.ApplicationUsers.Remove(entityToDelete);
+            await _context.SaveChangesAsync();
+            return entityToDelete;
         }
 
         public Task<UserEntity> GetByUserNameAsync(string userName)

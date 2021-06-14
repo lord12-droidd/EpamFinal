@@ -44,9 +44,10 @@ namespace BLL.Services
            return validation.Validator(GetAll(), model);
         }
 
-        public Task DeleteByIdAsync(string modelGuid)
+        public async Task DeleteByIdAsync(string modelGuid)
         {
-            throw new NotImplementedException();
+            await _unitOfWork.UserRepository.DeleteByIdAsync(modelGuid);
+            return;
         }
 
         public IEnumerable<UserModel> GetAll()
