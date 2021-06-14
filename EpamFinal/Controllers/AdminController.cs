@@ -12,10 +12,8 @@ namespace EpamFinal.Controllers
     public class AdminController : Controller
     {
         private readonly IUserService _userService;
-        private readonly ApplicationSettings _appSettings;
-        public AdminController(IUserService userService, IOptions<ApplicationSettings> applicationSettings)
+        public AdminController(IUserService userService)
         {
-            _appSettings = applicationSettings.Value;
             _userService = userService;
         }
 
