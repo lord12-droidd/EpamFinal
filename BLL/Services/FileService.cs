@@ -31,7 +31,9 @@ namespace BLL.Services
 
         public Task DeleteByIdAsync(int modelId)
         {
-            throw new NotImplementedException();
+            var file = _unitOfWork.FileRepository.GetByIdAsync(modelId);
+            File.Delete(file.Result.Path);
+            return _unitOfWork.FileRepository.DeleteByIdAsync(modelId);
         }
 
         public IEnumerable<FileModel> GetAll()

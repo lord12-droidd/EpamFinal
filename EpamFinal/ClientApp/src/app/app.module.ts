@@ -17,6 +17,7 @@ import { DownloadComponent } from './download/download.component';
 import { FileManagerComponent } from './file-manager/file-manager.component';
 import { UploadComponent } from './upload/upload.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DeleteComponent } from './delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ForbiddenComponent,
     DownloadComponent,
     FileManagerComponent,
-    UploadComponent
+    UploadComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

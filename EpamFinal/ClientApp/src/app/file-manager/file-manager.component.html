@@ -16,13 +16,15 @@
   <thead>
     <tr>
       <th>File name</th>
-      <th>Action</th>
+      <th>Download</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let file of files">
       <td>{{file}}</td>
       <td><app-download [disabled]="showProgress" [fileName]="file" (downloadStatus)="downloadStatus($event)"></app-download></td>
+      <td><app-delete [disabled]="showProgress" [fileName]="file"></app-delete></td>
     </tr>
   </tbody>
 </table>

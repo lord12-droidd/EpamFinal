@@ -57,6 +57,7 @@ namespace DAL.Repositories
                 return;
 
             Entity.Remove(entityToDelete);
+            await _context.SaveChangesAsync();
         }
 
         public IEnumerable<FileEntity> GetAllUserFiles(string userName)

@@ -9,6 +9,7 @@ import { RegistrationService } from './registration.service';
 export class FilesService {
   private baseApiUrl: string;
   private apiDownloadUrl: string;
+  private apiDeleteUrl: string;
   private apiUploadUrl: string;
   private apiFileUrl: string;
   private apiPersonalFilesUrl : string;
@@ -16,6 +17,7 @@ export class FilesService {
   constructor(private httpClient: HttpClient, private service: RegistrationService) {
     this.baseApiUrl = 'https://localhost:44320';
     this.apiDownloadUrl = this.baseApiUrl + '/File/Download';
+    this.apiDeleteUrl = this.baseApiUrl + '/File/Delete';
     this.apiUploadUrl = this.baseApiUrl + '/File/Upload';
     this.apiFileUrl = this.baseApiUrl + '/File/Files';
     this.apiPersonalFilesUrl = this.baseApiUrl + '/File/PersonalFiles';
@@ -29,6 +31,16 @@ export class FilesService {
       {
         reportProgress: true,
         responseType: 'blob'
+      }));
+  }
+
+  public deleteFile(file: string): Observable<HttpEvent<Blob>> {
+    return this.httpClient.request(new HttpRequest(
+      'DELETE',
+      `${this.apiDeleteUrl}?file=${file}`,
+      null,
+      {
+        reportProgress: true,
       }));
   }
 
